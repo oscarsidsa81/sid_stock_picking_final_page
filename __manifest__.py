@@ -6,8 +6,10 @@
     "summary": "Migra y desacopla x_pagina_final a sid_pagina_final en stock.picking.",
     "author": "oscarsidsa81",
     "license": "LGPL-3",
-    "depends": [
+    "depends" : [
         "stock",
+        "delivery",
+        "oct_customize_reports",
     ],
     "data": [
         "views/stock_picking_views.xml",
