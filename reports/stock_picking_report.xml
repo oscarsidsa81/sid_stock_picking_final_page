@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <template id="report_delivery_document_inherit_sid_pagina_final"
+                  inherit_id="stock.report_delivery_document"
+                  priority="16000">
+
+            <xpath expr="//div[@name='signature']" position="after">
+                <p t-if="o.sid_pagina_final" style="page-break-before:always;"/>
+                <p t-if="o.sid_pagina_final" class="mb-1"><u>Summary:</u></p>
+
+                <span t-if="o.desc_embalaje and o.sid_pagina_final">Packaging description:
+                    <span class="m-0" t-if="o.sid_pagina_final" t-esc="o.desc_embalaje"/>
+                </span>
+                <br/>
+
+                <span t-if="o.tipo_transporte and o.sid_pagina_final">Type of transport:
+                    <span class="m-0" t-if="o.sid_pagina_final" t-esc="o.tipo_transporte"/>
+                </span>
+                <br/>
+
+                <span t-if="o.sid_pagina_final">Net weight:
+                    <span class="m-0"
+                          t-if="o.sid_pagina_final"
+                          t-esc="o.weight"
+                          t-options='{"widget": "float", "precision": 2}'/>
+                </span>
+                <br/>
+
+                <span t-if="o.sid_pagina_final">Gross weight:
+                    <span class="m-0"
+                          t-if="o.sid_pagina_final"
+                          t-esc="o.shipping_weight"
+                          t-options='{"widget": "float", "precision": 2}'/>
+                </span>
+                <br/>
+
+                <div t-if="o.sid_pagina_final" class="mb-2"/>
+                <p t-if="o.sid_pagina_final" class="mb-1"><u>Details:</u></p>
+
+                <span t-if="o.sid_pagina_final">Carrier:
+                    <span t-if="o.carrier_id and o.sid_pagina_final" class="m-0" t-esc="o.carrier_id.name"/>
+                </span>
+                <br/>
+
+                <span t-if="o.ref_transp and o.sid_pagina_final">Reference:
+                    <span t-if="o.sid_pagina_final" class="m-0" t-esc="o.ref_transp"/>
+                </span>
+                <br/>
+
+                <div t-if="o.sid_pagina_final" class="mb-3"/>
+                <p t-if="o.sid_pagina_final" t-field="o.note"/>
+            </xpath>
+
+        </template>
+
+    </data>
+</odoo>

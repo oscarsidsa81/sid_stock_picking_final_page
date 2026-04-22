@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="view_picking_form_sid_pagina_final" model="ir.ui.view">
+            <field name="name">stock.picking.form.sid.pagina.final</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="priority">16000</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='autorizacion_envio']" position="after">
+                    <field name="sid_pagina_final" string="Mostrar hoja final"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="view_picking_form_sid_motivo_after_pagina_final" model="ir.ui.view">
+            <field name="name">stock.picking.form.sid.motivo.after.pagina.final</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="priority">16010</field>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sid_pagina_final']" position="after">
+                    <field name="x_motivo"
+                           style="background-color:grey;font-size:15px;color:white;"
+                           attrs="{'invisible': [('picking_type_id', 'not in', (6, 12, 18, 24))], 'required': ['&amp;', ('state', 'not in', ('draft', 'done', 'cancel')), ('picking_type_id', 'in', (6, 12, 18, 24))]}"/>
+                </xpath>
+            </field>
+        </record>
+
+    </data>
+</odoo>
